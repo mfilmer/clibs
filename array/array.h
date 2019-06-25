@@ -4,13 +4,14 @@
 typedef struct {
 	void** data;
 	uint32_t length;		// Number of items exposed to the user
-	uint32_t maxlength;		// Length of allocated array
+	uint32_t alloclength;	// Length of allocated array
 } Array;
 
 // Function prototypes
 void* newArray(uint32_t length);
 void deleteArray(Array* array);
 void deleteArrayAndContents(Array* array);
+void trimArray(Array* array);
 
 void insertIntoArray(Array* array, void* item, uint32_t index);
 void removeFromArray(Array* array, uint32_t index);
