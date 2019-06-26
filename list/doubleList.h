@@ -10,6 +10,14 @@
 #define newList newDoubleList
 #define destroyList destroyDoubleList
 
-#include "list.h"
+#define getListItem getDoubleListItem
+#define setListItem setDoubleListItem
+#define nextListItem nextDoubleListItem
+#define prevListItem prevDoubleListItem
+
+#define insertListItem insertDoubleListItem
+#define removeListItem removeDoubleListItem
+
+#include "listbase.h"
 
 #endif
