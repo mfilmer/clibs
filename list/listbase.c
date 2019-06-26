@@ -3,6 +3,7 @@
 ListItem* getListItemPtr (List * list, uint32_t index);
 
 
+// Implementation of public functions
 List* newList(uint32_t length)
 {
 	List* list = malloc(sizeof(List));
@@ -36,10 +37,10 @@ List* newList(uint32_t length)
 }
 
 
-int destroyList(List * list)
+int destroyList(List* list)
 {
-	ListItem * thisItem = list->first;
-	ListItem * nextItem;
+	ListItem* thisItem = list->first;
+	ListItem* nextItem;
 
 	// Destroy each item
 	for(int i = 0;i < list->length;i++) {
@@ -56,7 +57,6 @@ int destroyList(List * list)
 
 
 
-
 ListType getListItem(List* list, uint32_t index)
 {
 	ListItem* item = getListItemPtr(list, index);
@@ -68,7 +68,6 @@ ListType getListItem(List* list, uint32_t index)
 
 	return item->value;
 }
-
 
 
 int setListItem(List * list, uint32_t index, ListType value)
@@ -172,7 +171,7 @@ int insertListItem(List* list, uint32_t index, ListType item)
 
 int removeListItem(List* list, uint32_t index)
 {
-	if (index > list->length) {
+	if (index >= list->length) {
 		return LIST_ERROR_BOUND;
 	}
 

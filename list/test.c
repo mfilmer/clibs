@@ -73,8 +73,28 @@ void testDeletingItems(TestResults* results)
 	assertDouble(results, getDoubleListItem(list, 0), 2);
 	assertDouble(results, getDoubleListItem(list, 1), 3);
 	assertDouble(results, getDoubleListItem(list, 2), 5);
+
+	int error = removeDoubleListItem(list, 3);
+	assertInt(results, error, LIST_ERROR_BOUND);
 }
 
+void testIterating(TestResults* results)
+{
+	DoubleList* list = newDoubleList(5);
+
+	setDoubleListItem(list, 0, 1);
+	setDoubleListItem(list, 1, 2);
+	setDoubleListItem(list, 2, 3);
+	setDoubleListItem(list, 3, 4);
+	setDoubleListItem(list, 4, 5);
+
+	assertDouble(results, getDoubleListItem(list, 0), 1);
+	for(int i = 1;i < 5;i++) {
+		double value;
+		nextDoubleListItem(list, &value);
+		assertDouble(results, i+1, value);
+	}
+}
 
 int main()
 {
@@ -95,6 +115,12 @@ int main()
 	printf("Test Inserting Items...\n");
 	results = newResults();
 	testDeletingItems(results);
+	printResults(results);
+	deleteResults(results);
+
+	printf("Test iterating over items...\n");
+	results = newResults();
+	testIterating(results);
 	printResults(results);
 	deleteResults(results);
 
